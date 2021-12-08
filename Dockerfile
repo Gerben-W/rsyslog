@@ -6,3 +6,4 @@ RUN apt-get update && apt-get install -y \
         libjpeg62-turbo-dev \
         libpng-dev \
     && docker-php-ext-install mysqli pdo_mysql
+    && apt-get clean
