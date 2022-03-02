@@ -1,3 +1,3 @@
-# php7.4-fpm
+# rsyslog
 
-Docker from the original php7.4-fpm docker including mysqli and pdo_mysql
+Docker from the original ubuntu 20.04 docker including rsyslog
