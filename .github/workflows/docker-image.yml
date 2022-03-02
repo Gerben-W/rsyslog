@@ -27,7 +27,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: capino/php7.4-fpm
+          images: capino/rsyslog
           tags: |
             type=sha,prefix={{branch}}-
             type=raw,value=latest
