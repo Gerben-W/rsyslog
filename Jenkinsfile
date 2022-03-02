@@ -6,7 +6,7 @@ node {
       }     
       stage('Build image') {         
        
-            app = docker.build("capino/php7.4-fpm")    
+            app = docker.build("capino/rsyslog")    
        }     
       stage('Test image') {           
             app.inside {            
