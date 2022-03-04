@@ -22,11 +22,12 @@ RUN apt autoremove -y && rm -rf /var/lib/apt/lists/* && apt clean
 ENV supervisor_conf /etc/supervisor/supervisord.conf
 
 # Copy supervisor configuration
-COPY files/supervisord.conf ${supervisor_conf}
+COPY ./files/supervisord.conf ${supervisor_conf}
 
 # Volume configuration
 VOLUME ["/etc/filebeat"]
 
 # Copy start.sh script and define default command for the container
-COPY files/start.sh /start.sh
+COPY ./files/start.sh /start.sh
+
 CMD ["./start.sh"]
