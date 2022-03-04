@@ -11,7 +11,7 @@ RUN apt update && apt upgrade -y
 RUN apt install -y supervisor
 
 # Install Filebeat
-RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 RUN echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
 RUN apt-get update && sudo apt-get install filebeat
 RUN systemctl enable filebeat
