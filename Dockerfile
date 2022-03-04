@@ -7,7 +7,7 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Update Ubuntu Software repository
-RUN apt update && apt upgrade -y \
+RUN apt update && apt upgrade -y && \
         apt install -y supervisor
 
 # Install Filebeat
