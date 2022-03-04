@@ -8,7 +8,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Update Ubuntu Software repository
 RUN apt update && apt upgrade -y
-RUN apt install -y supervisor wget
+RUN apt install -y supervisor wget gnupg2
 
 # Install Filebeat
 RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
