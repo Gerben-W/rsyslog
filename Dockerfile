@@ -7,14 +7,14 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Update Ubuntu Software repository
-RUN apt update && apt upgrade -y && \
-        apt install -y supervisor
+RUN apt update && apt upgrade -y
+RUN apt install -y supervisor
 
 # Install Filebeat
-RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - && \
-        echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list && \
-        apt-get update && sudo apt-get install filebeat && \
-        systemctl enable filebeat
+RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+RUN echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
+RUN apt-get update && sudo apt-get install filebeat
+RUN systemctl enable filebeat
 
 # Cleanup apt
 RUN apt autoremove -y && rm -rf /var/lib/apt/lists/* && apt clean
