@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+cd /usr/share/filebeat/bin || exit
+
+exec \
+    s6-setuidgid abc /usr/share/filebeat/bin/filebeat -c /config/filebeat.yml \
+	-path.home /usr/share/filebeat
+	-path.config /config
+	-path.data /var/lib/filebeat
+	-path.logs /var/log/filebeat
