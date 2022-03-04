@@ -25,7 +25,7 @@ ENV supervisor_conf /etc/supervisor/supervisord.conf
 COPY ./files/supervisord.conf ${supervisor_conf}
 
 # Volume configuration
-VOLUME ["/etc/filebeat"]
+#VOLUME ["/etc/filebeat"]
 
 # Copy start.sh script and define default command for the container
 COPY ./files/start.sh /start.sh
