@@ -14,5 +14,4 @@ RUN cd /etc/apk/keys && \
 # Cleanup cache repo
 RUN apk cache clean
 
-# ports and volumes
-VOLUME /config
+ENTRYPOINT ["rsyslog"]
