@@ -1,25 +1,18 @@
 #update:04-03-2022
 
 # Download base image ubuntu 20.04
-FROM ubuntu:20.04
+FROM alpine:3.18
 
-# Disable Prompt During Packages Installation
-ARG DEBIAN_FRONTEND=noninteractive
+# Update packages and install rsyslog
+RUN cd /etc/apk/keys && \
+	wget http://alpine.adiscon.com/rsyslog@lists.adiscon.com-5a55e598.rsa.pub && \
+	echo 'http://alpine.adiscon.com/3.7/stable' >> /etc/apk/repositories && \
+	apk update && \
+	apk add rsyslog && \
+	apk upgrade
 
-# Update Ubuntu Software repository
-RUN apt update && apt upgrade -y && \
-	apt install -y supervisor curl gnupg2
-
-# Install Filebeat
-RUN curl -sL https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
-	echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-8.x.list && \
-	apt-get update && apt-get install filebeat
-
-# Cleanup apt
-RUN apt autoremove -y && rm -rf /var/lib/apt/lists/* && apt clean
-
-# copy local files
-COPY root/ /
+# Cleanup cache repo
+RUN apk cache clean
 
 # ports and volumes
 VOLUME /config

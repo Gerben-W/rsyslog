@@ -1,3 +1,3 @@
 # Filebeat
 
-Docker from the original ubuntu 20.04 docker including filebeat
+Docker from the original alpine 3.18 docker with rsyslog added
