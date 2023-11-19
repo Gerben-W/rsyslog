@@ -18,6 +18,4 @@ RUN apt clean && apt autoclean
 
 STOPSIGNAL SIGQUIT
 
-CMD ["rsyslogd", "-n"]
-
-CMD ["sleep", "infinity"]"
+CMD ["sh", "/root/run.sh"]
