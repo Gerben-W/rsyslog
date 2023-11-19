@@ -1,17 +1,19 @@
-#update:04-03-2022
+#update:19-11-2023
 
 # Download base image ubuntu 20.04
-FROM alpine:3.18
+FROM ubuntu:jammy
+
+ARG PUID=1000
+ARG PGID=1000
 
 # Update packages and install rsyslog
-RUN cd /etc/apk/keys && \
-	wget http://alpine.adiscon.com/rsyslog@lists.adiscon.com-5a55e598.rsa.pub && \
-	echo 'http://alpine.adiscon.com/3.7/stable' >> /etc/apk/repositories && \
-	apk update && \
-	apk add rsyslog && \
-	apk upgrade
+RUN apt update && apt upgrade -y 
+RUN apt install rsyslog -y
+
+# Copy files
+COPY root/ /
 
 # Cleanup cache repo
-RUN apk cache clean
+RUN apt clean && apt autoclean
 
-ENTRYPOINT ["rsyslog"]
+ENTRYPOINT ["/init"]
