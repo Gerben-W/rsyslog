@@ -16,4 +16,6 @@ COPY root/ /
 # Cleanup cache repo
 RUN apt clean && apt autoclean
 
+STOPSIGNAL SIGQUIT
+
 CMD ["rsyslog", "-g", "daemon off;"]
