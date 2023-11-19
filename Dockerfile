@@ -18,4 +18,4 @@ RUN apt clean && apt autoclean
 
 STOPSIGNAL SIGQUIT
 
-CMD ["sh", "/root/run.sh"]
+CMD ["sh", "/run.sh"]
