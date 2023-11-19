@@ -1,6 +1,5 @@
 #!/bin/bash
 
-service supervisor start
-service rsyslogd start
+/usr/sbin/rsyslogd -n
 
 cat
