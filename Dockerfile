@@ -16,4 +16,4 @@ COPY root/ /
 # Cleanup cache repo
 RUN apt clean && apt autoclean
 
-ENTRYPOINT ["/init"]
+CMD ["rsyslog", "-g", "daemon off;"]
