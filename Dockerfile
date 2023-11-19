@@ -18,4 +18,4 @@ RUN apt clean && apt autoclean
 
 STOPSIGNAL SIGQUIT
 
-CMD ["rsyslog", "-g", "daemon off;"]
+CMD ["rsyslogd", "-g", "daemon off;"]
