@@ -1,12 +1,9 @@
-# syntax=docker/dockerfile:1
-#
+# Updated 2026-03-03
+
 ARG IMAGEBASE=alpine
-#
 FROM ${IMAGEBASE}
-#
 ENV S6_USER=rsyslog \
     S6_USERHOME=/var/lib/rsyslog
-#
 RUN set -xe \
     && apk add --no-cache --purge -uU \
         logrotate \
@@ -26,11 +23,7 @@ RUN set -xe \
     && adduser -h ${S6_USERHOME} -D -s /bin/false ${S6_USER} \
     && passwd -d -u ${S6_USER} \
     && rm -rf /var/cache/apk/* /tmp/*
-#
 COPY root/ /
-#
 VOLUME /var/log/ /var/spool/rsyslog
-#
 EXPOSE 514/tcp 514/udp 2514
-#
 ENTRYPOINT ["/init"]
